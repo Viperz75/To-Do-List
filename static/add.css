@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+	margin: 0;
+	height: 100vh;
+	font-family: Shalimar;
+	justify-content: center;
+	background-color: #2a2a2a;
+	color: #0269A4;
+}
+
+form {
+    margin-top: 12%;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+input{
+    background: none;
+    margin-left: 10px;
+    width: 15%;
+    padding: 8px 8px;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid white;
+    color: #fff;
+}
+
+input:focus {
+    color: white;
+    caret-color: 2px;
+}
+
+@media screen and (max-width: 768px){
+    input {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        width: 50%;
+        padding: 10% 0 0 0;
+        font-size: 18px;
+    }
+}

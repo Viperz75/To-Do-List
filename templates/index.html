@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>To-Do List</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Shalimar&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body style="background: radial-gradient(rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 50%) 100%), radial-gradient(rgb(0 0 0 / 0%) 33%, rgb(0 0 0 / 30%) 166%), url(../static/graphic.jpg)">
+    <!-- Header  -->
+    <div class="container1">
+        <center>
+            <div class="header">
+                <h1><i class="fa fa-check"></i> To-Do List</h1>
+                <a href="{{ url_for('add') }}"><button class="btn"><i class="fa fa-plus"></i> Add a Task</button></a>
+                {% if all == []: %}
+                    <p>What are you going to do today?</p>
+                {% else: %}
+                <center>
+                    <div class="container">
+                    {% for tasks in all %}
+                        {% if tasks.time == time %}
+                            <div class="card" style="background: red;">
+                                    <div class="box">
+                                        <p>Task: {{ tasks.task }}</p>
+                                        <p>Category: {{ tasks.category }}</p>
+                                        <p>Date: {{ tasks.date }}</p>
+                                        <p>Time: {{ tasks.time }}</p>
+                                        <p><a href="{{ url_for('delete', id=tasks.id) }}"><i class="fa fa-trash"></i></a></p>
+                                    </div>
+                            </div>
+                        {% else %}
+                            <div class="card" id="card">
+                                <div class="box">
+                                    <p>Task: {{ tasks.task }}</p>
+                                    <p>Category: {{ tasks.category }}</p>
+                                    <p>Date: {{ tasks.date }}</p>
+                                    <p>Time: {{ tasks.time }}</p>
+                                    <p><a href="{{ url_for('delete', id=tasks.id) }}"><i class="fa fa-trash"></i></a></p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </center>
+                {% endif%}
+            </div>
+        </center>
+    </div>
+</body>
+<script>
+  $( function() {
+    $( ".card" ).draggable();
+  } );
+</script>
+</html>
